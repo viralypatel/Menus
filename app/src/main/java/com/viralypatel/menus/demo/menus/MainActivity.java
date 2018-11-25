@@ -80,6 +80,22 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.options_menu, menu);
+
+        Intent i = new Intent(android.content.Intent.ACTION_SEND);
+        i.setType("text/plain");
+        i.putExtra(android.content.Intent.EXTRA_TEXT, "Check out the menu course app!");
+
+        // Search and populate the menu with acceptable offering applications.
+        menu.addIntentOptions(
+                R.id.intent_group,  // Menu group to which new items will be added
+                0,      // Unique item ID (none)
+                0,      // Order for the items (none)
+                this.getComponentName(),   // The current activity name
+                null,   // Specific items to place first (none)
+                i, // Intent created above that describes our requirements
+                0,      // Additional flags to control items (none)
+                null);  // Array of MenuItems that correlate to specific items (none)
+
         return true;
     }
 

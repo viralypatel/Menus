@@ -8,4 +8,7 @@
         <item android:id="@+id/menuItem3"
             android:title="Menu Item 3" />
     </group>
+    <group android:id="@+id/intent_group">
+
+    </group>
 </menu>
