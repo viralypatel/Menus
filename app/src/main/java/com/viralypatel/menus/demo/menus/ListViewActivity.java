@@ -3,6 +3,11 @@ package com.viralypatel.menus.demo.menus;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseBooleanArray;
+import android.view.ActionMode;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -35,7 +40,47 @@ public class ListViewActivity extends AppCompatActivity {
         // Set the ArrayAdapter as the ListView's adapter.
         mainListView.setAdapter( listAdapter );
 
+        mainListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
 
+        mainListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+            @Override
+            public void onItemCheckedStateChanged(ActionMode actionMode, int i, long l, boolean b) {
+                // to do something when items are selected / de-selected
+                // for now we do nothing
+            }
+
+            @Override
+            public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
+                // inflate the menu
+                MenuInflater inflater = actionMode.getMenuInflater();
+                inflater.inflate(R.menu.listview_menu, menu);
+                return true;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
+                // do nothing for now
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
+                // take action when a menu item is clicked
+                switch (menuItem.getItemId()) {
+                    case R.id.listDelete:
+                        deleteSelectedItems();
+                        actionMode.finish();
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode actionMode) {
+                // do nothing for now
+            }
+        });
 
     }
 
