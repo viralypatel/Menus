@@ -1,5 +1,6 @@
 package com.viralypatel.menus.demo.menus;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
@@ -127,6 +128,11 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         popup.setOnMenuItemClickListener(this);
         popup.inflate(R.menu.popup_menu);
         popup.show();
+    }
+
+    public void showListViewActivity(View view) {
+        Intent i = new Intent(MainActivity.this, ListViewActivity.class);
+        startActivity(i);
     }
 
     @Override

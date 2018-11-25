@@ -32,4 +32,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <Button
+        android:id="@+id/btnListView"
+        android:text="Show List View Activity"
+        app:layout_constraintTop_toBottomOf="@id/btnPopupMenu"
+        android:onClick="showListViewActivity"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </android.support.constraint.ConstraintLayout>
