@@ -85,6 +85,10 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.isChecked()) item.setChecked(false);
+        else item.setChecked(true);
+
         // handling options menu item click
         switch (item.getItemId()) {
             case R.id.menuItem1:
@@ -95,6 +99,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 return true;
             case R.id.menuItem3:
                 Toast.makeText(this, "Menu Item 3 Clicked", Toast.LENGTH_SHORT).show();
+                if(item.isChecked())
+                    Toast.makeText(this, "It's checked", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
